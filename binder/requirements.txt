@@ -1,0 +1,1 @@
+pyhf[backends,xmlio]==0.4.4
