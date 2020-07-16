@@ -1,9 +1,9 @@
-all: book
+all: build
 
-defualt: book
+defualt: build
 
-book:
-	jupyter-book build .
+build:
+	jupyter-book build book/
 
-clean:
-	rm -rf _build
+clean: book/_build
+	rm -rf book/_build
