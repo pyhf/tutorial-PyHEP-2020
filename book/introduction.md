@@ -26,7 +26,7 @@ If you haven't already, make a new Python virtual environment and then install `
 (pyhf-tutorial) $ python -m pip install pyhf
 ```
 
- or [Conda-forge](https://github.com/conda-forge/pyhf-feedstock)
+ or [Conda-forge](https://anaconda.org/conda-forge/pyhf)
 
 ```
 (pyhf-tutorial) $ conda config --add channels conda-forge
