@@ -4,3 +4,20 @@
 
 ![Deploy Jupyter Book](https://github.com/pyhf/tutorial-PyHEP-2020/workflows/Deploy%20Jupyter%20Book/badge.svg)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyhf/tutorial-PyHEP-2020/master)
+
+## Setup
+
+In a Python virtual environment run the following
+
+```
+python -m pip install -r binder/requirements.txt
+python -m pip install -r book/requirements.txt
+```
+
+## Build
+
+To build the book after setup simple run
+
+```
+make build
+```
