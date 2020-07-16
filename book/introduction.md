@@ -7,7 +7,7 @@
 </p>
 
 Welcome to the `pyhf` tutorial given at [PyHEP 2020](https://indico.cern.ch/event/882824/)!
-We'll first point you towards our documentation website and recommend that you visit it for much more detailed explanations and examples.
+We'll first point you towards our documentation website ([scikit-hep.org/pyhf/](https://scikit-hep.org/pyhf/)) and recommend that you visit it for much more detailed explanations and examples.
 We don't have a lot of time today, so let's dive right in.
 
 We won't review the full pedagogy of `HistFactory`, so instead we'll point you to
