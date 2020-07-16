@@ -2,8 +2,8 @@ name: Deploy Jupyter Book
 
 on:
   push:
-    # branches:
-    # - master
+    branches:
+    - master
 
 jobs:
 
