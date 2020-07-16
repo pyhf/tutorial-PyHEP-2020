@@ -2,4 +2,6 @@
 - file: introduction
 
 - header: Get started
-- file: hello-world
+- file: HistFactory
+- file: inference
+- file: visualization
