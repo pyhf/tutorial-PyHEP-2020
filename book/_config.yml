@@ -2,7 +2,7 @@
 # Book settings
 title: pyhf Tutorial PyHEP 2020
 author: the pyhf development team
-logo: .book/logo.png
+logo: assets/logo.png
 
 # HTML-specific settings
 html:

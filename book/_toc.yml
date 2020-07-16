@@ -1,5 +1,5 @@
 # https://jupyterbook.org/customize/toc.html
-- file: README
+- file: introduction
 
 - header: Get started
 # - file: tutorial
