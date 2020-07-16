@@ -3,3 +3,4 @@
 `pyhf` tutorial given at [PyHEP 2020](https://indico.cern.ch/event/882824/)
 
 ![Deploy Jupyter Book](https://github.com/pyhf/tutorial-PyHEP-2020/workflows/Deploy%20Jupyter%20Book/badge.svg)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyhf/tutorial-PyHEP-2020/master)
