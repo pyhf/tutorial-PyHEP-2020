@@ -1,7 +1,7 @@
 # https://jupyterbook.org/customize/config.html
 # Book settings
 title: pyhf Tutorial PyHEP 2020
-author: pyhf development team
+author: the pyhf development team
 logo: .book/logo.png
 
 # HTML-specific settings
