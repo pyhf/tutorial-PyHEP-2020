@@ -4,4 +4,5 @@
 - header: Get started
 - file: HistFactory
 - file: inference
+- file: serialization
 - file: visualization
