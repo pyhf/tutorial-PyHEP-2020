@@ -1,8 +1,9 @@
 # https://jupyterbook.org/customize/toc.html
 - file: introduction
 
-- header: Get started
-- file: HistFactory
-- file: inference
-- file: serialization
-- file: visualization
+- part: Get started
+  chapters:
+  - file: HistFactory
+  - file: inference
+  - file: serialization
+  - file: visualization
