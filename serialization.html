@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Likelihood Serialization and Preservation &#8212; PyHEP 2020 pyhf Tutorial</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualization" href="visualization.html" />
+    <link rel="prev" title="Model Inference" href="inference.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">PyHEP 2020 pyhf Tutorial</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   PyHEP 2020 pyhf Tutorial
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="HistFactory.html">
+   HistFactory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inference.html">
+   Model Inference
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Likelihood Serialization and Preservation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/serialization.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pyhf/tutorial-PyHEP-2020"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/pyhf/tutorial-PyHEP-2020/issues/new?title=Issue%20on%20page%20%2Fserialization.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/pyhf/tutorial-PyHEP-2020/edit/master/book/serialization.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pyhf/tutorial-PyHEP-2020/master?urlpath=lab/tree/book/serialization.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pyhf/tutorial-PyHEP-2020/blob/master/book/serialization.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preserved-on-hepdata">
+   Preserved on HEPData
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="likelihood-serialization-and-preservation">
+<h1>Likelihood Serialization and Preservation<a class="headerlink" href="#likelihood-serialization-and-preservation" title="Permalink to this headline">¶</a></h1>
+<p align="center">
+<a href="https://inspirehep.net/record/1698425"><img src="https://raw.githubusercontent.com/matthewfeickert/talk-SciPy-2020/e0c509cd0dfef98f5876071edd4c60aff9199a1b/figures/arXiv_1810-05648_header.png"></a>
+</p>
+<p align="center">
+<a href="https://twitter.com/lukasheinrich_/status/1052142936803160065"><img src="https://raw.githubusercontent.com/matthewfeickert/talk-SciPy-2020/e0c509cd0dfef98f5876071edd4c60aff9199a1b/figures/pyhf_arXiv.gif" width="300" height="214" border="0"></a>
+</p>
+<p align="center">
+<a href="https://cds.cern.ch/record/2684863"><img src="https://raw.githubusercontent.com/matthewfeickert/talk-SciPy-2020/e0c509cd0dfef98f5876071edd4c60aff9199a1b/figures/ATLAS_PUB_Note_title.png"></a>
+</p>
+<p align="center">
+<a href="https://home.cern/news/news/knowledge-sharing/new-open-release-allows-theorists-explore-lhc-data-new-way"><img src="https://raw.githubusercontent.com/matthewfeickert/talk-SciPy-2020/e0c509cd0dfef98f5876071edd4c60aff9199a1b/figures/CERN_news_story.png" border="0"></a>
+</p><div class="section" id="preserved-on-hepdata">
+<h2>Preserved on HEPData<a class="headerlink" href="#preserved-on-hepdata" title="Permalink to this headline">¶</a></h2>
+<p>As of PyHEP 2020, ATLAS has published 4 full likelihoods to HEPData</p>
+<p align="center">
+<a href="https://www.hepdata.net/record/ins1755298?version=2"><img src="https://raw.githubusercontent.com/matthewfeickert/talk-SciPy-2020/e0c509cd0dfef98f5876071edd4c60aff9199a1b/figures/HEPData_likelihoods.png"></a>
+</p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">tarfile</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">electroweakino_HEPData_URL</span> <span class="o">=</span> <span class="s2">&quot;https://www.hepdata.net/record/resource/1267798?view=true&quot;</span>
+<span class="n">targz_filename</span> <span class="o">=</span> <span class="s2">&quot;1Lbb_workspaces.tar.gz&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">electroweakino_HEPData_URL</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">targz_filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="k">assert</span> <span class="p">(</span>
+    <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">targz_filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+    <span class="o">==</span> <span class="s2">&quot;64bbbef9f1aaf9e30d75c8975de4789484329b2b825d89331a6f2081661aa728&quot;</span>
+<span class="p">)</span>
+<span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">targz_filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+<span class="c1"># Open as a tarfile</span>
+<span class="n">tar_archive</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">targz_filename</span><span class="p">,</span> <span class="s2">&quot;r:gz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_json_from_tarfile</span><span class="p">(</span><span class="n">tarfile</span><span class="p">,</span> <span class="n">json_name</span><span class="p">):</span>
+    <span class="n">json_file</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">tarfile</span><span class="o">.</span><span class="n">getmember</span><span class="p">(</span><span class="n">json_name</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_file</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_bkg_and_signal</span><span class="p">(</span><span class="n">tarfile</span><span class="p">,</span> <span class="n">directory_name</span><span class="p">,</span> <span class="n">model_point</span><span class="p">):</span>
+    <span class="n">background_only</span> <span class="o">=</span> <span class="n">get_json_from_tarfile</span><span class="p">(</span><span class="n">tarfile</span><span class="p">,</span> <span class="n">directory_name</span> <span class="o">+</span> <span class="s2">&quot;/BkgOnly.json&quot;</span><span class="p">,)</span>
+    <span class="n">patchset</span> <span class="o">=</span> <span class="n">pyhf</span><span class="o">.</span><span class="n">PatchSet</span><span class="p">(</span>
+        <span class="n">get_json_from_tarfile</span><span class="p">(</span><span class="n">tarfile</span><span class="p">,</span> <span class="n">directory_name</span> <span class="o">+</span> <span class="s2">&quot;/patchset.json&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">signal_patch</span> <span class="o">=</span> <span class="n">patchset</span><span class="p">[</span><span class="n">model_point</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">background_only</span><span class="p">,</span> <span class="n">signal_patch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyhf</span>
+
+<span class="k">def</span> <span class="nf">calculate_CLs</span><span class="p">(</span><span class="n">bkgonly_json</span><span class="p">,</span> <span class="n">signal_patch_json</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the observed CLs and the expected CLs band from a background only</span>
+<span class="sd">    and signal patch.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        bkgonly_json: The JSON for the background only model</span>
+<span class="sd">        signal_patch_json: The JSON Patch for the signal model</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        CLs_obs: The observed CLs value</span>
+<span class="sd">        CLs_exp: List of the expected CLs value band</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">workspace</span> <span class="o">=</span> <span class="n">pyhf</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">Workspace</span><span class="p">(</span><span class="n">bkgonly_json</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">model</span><span class="p">(</span>
+        <span class="n">measurement_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">patches</span><span class="o">=</span><span class="p">[</span><span class="n">signal_patch_json</span><span class="p">],</span>
+        <span class="n">modifier_settings</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;normsys&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;interpcode&quot;</span><span class="p">:</span> <span class="s2">&quot;code4&quot;</span><span class="p">},</span>
+            <span class="s2">&quot;histosys&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;interpcode&quot;</span><span class="p">:</span> <span class="s2">&quot;code4p&quot;</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">pyhf</span><span class="o">.</span><span class="n">infer</span><span class="o">.</span><span class="n">hypotest</span><span class="p">(</span>
+        <span class="mf">1.0</span><span class="p">,</span> <span class="n">workspace</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">model</span><span class="p">),</span> <span class="n">model</span><span class="p">,</span> <span class="n">qtilde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_expected_set</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oneLbb_background</span><span class="p">,</span> <span class="n">oneLbb_Wh_hbb_750_100_signal_patch</span> <span class="o">=</span> <span class="n">get_bkg_and_signal</span><span class="p">(</span>
+    <span class="n">tar_archive</span><span class="p">,</span> <span class="s2">&quot;1Lbb-likelihoods-hepdata&quot;</span><span class="p">,(</span><span class="mi">750</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>  <span class="c1"># &quot;C1N2_Wh_hbb_750_100(750, 100)&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLs_obs</span><span class="p">,</span> <span class="n">CLs_exp_band</span> <span class="o">=</span> <span class="n">calculate_CLs</span><span class="p">(</span><span class="n">oneLbb_background</span><span class="p">,</span> <span class="n">oneLbb_Wh_hbb_750_100_signal_patch</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.8.6/x64/lib/python3.8/site-packages/pyhf/tensor/numpy_backend.py:255: RuntimeWarning: invalid value encountered in log
+  return n * np.log(lam) - lam - gammaln(n + 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Observed: </span><span class="si">{}</span><span class="s1">, Expected band: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">CLs_obs</span><span class="p">,</span> <span class="n">CLs_exp_band</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Observed: 0.0662858973723076, Expected band: [9.521240025279684e-05, 0.0010232044661932368, 0.009465318735204287, 0.0658248752163788, 0.2824224872612863]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="inference.html" title="previous page">Model Inference</a>
+    <a class='right-next' id="next-link" href="visualization.html" title="next page">Visualization</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By the pyhf development team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

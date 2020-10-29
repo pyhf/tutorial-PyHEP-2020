@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HistFactory &#8212; PyHEP 2020 pyhf Tutorial</title>
+    
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Inference" href="inference.html" />
+    <link rel="prev" title="PyHEP 2020 pyhf Tutorial" href="introduction.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">PyHEP 2020 pyhf Tutorial</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   PyHEP 2020 pyhf Tutorial
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Get started
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   HistFactory
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inference.html">
+   Model Inference
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="serialization.html">
+   Likelihood Serialization and Preservation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization.html">
+   Visualization
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/HistFactory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pyhf/tutorial-PyHEP-2020"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/pyhf/tutorial-PyHEP-2020/issues/new?title=Issue%20on%20page%20%2FHistFactory.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/pyhf/tutorial-PyHEP-2020/edit/master/book/HistFactory.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pyhf/tutorial-PyHEP-2020/master?urlpath=lab/tree/book/HistFactory.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/pyhf/tutorial-PyHEP-2020/blob/master/book/HistFactory.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#json-spec">
+   JSON Spec
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-channel">
+     Single Channel
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#samples">
+     Samples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modifiers">
+     Modifiers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measurements">
+   Measurements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#inspecting-workspaces">
+   Inspecting workspaces
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="histfactory">
+<h1>HistFactory<a class="headerlink" href="#histfactory" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://matthewfeickert.github.io/talk-SciPy-2020/index.html#2&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;1200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;675&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><p align="center">
+<iframe src="https://matthewfeickert.github.io/talk-SciPy-2020/index.html#2" width="1200" height="675"></iframe>
+</p>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://matthewfeickert.github.io/talk-SciPy-2020/index.html#6&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;1200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;675&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><p align="center">
+<iframe src="https://matthewfeickert.github.io/talk-SciPy-2020/index.html#6" width="1200" height="675"></iframe>
+</p>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://matthewfeickert.github.io/talk-SciPy-2020/index.html#7&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;1200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;675&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><p align="center">
+<iframe src="https://matthewfeickert.github.io/talk-SciPy-2020/index.html#7" width="1200" height="675"></iframe>
+</p>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">align</span><span class="o">=</span><span class="s">&quot;center&quot;</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://matthewfeickert.github.io/talk-SciPy-2020/index.html#13&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;1200&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;675&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><p align="center">
+<iframe src="https://matthewfeickert.github.io/talk-SciPy-2020/index.html#13" width="1200" height="675"></iframe>
+</p>
+</div></div>
+</div>
+<div class="section" id="json-spec">
+<h2>JSON Spec<a class="headerlink" href="#json-spec" title="Permalink to this headline">¶</a></h2>
+<p>Let’s investiage this spec a bit more now</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;channels&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;singlechannel&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;samples&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span>
+              <span class="nt">&quot;modifiers&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;normfactor&quot;</span><span class="p">,</span> <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">}</span> <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;background&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">],</span>
+              <span class="nt">&quot;modifiers&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;uncorr_bkguncrt&quot;</span><span class="p">,</span> <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;shapesys&quot;</span><span class="p">,</span> <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">]}</span> <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;observations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;singlechannel&quot;</span><span class="p">,</span> <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">]</span> <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;measurements&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Measurement&quot;</span><span class="p">,</span> <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span><span class="nt">&quot;poi&quot;</span><span class="p">:</span> <span class="s2">&quot;mu&quot;</span><span class="p">,</span> <span class="nt">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">[]}</span> <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>which demonstrates a simple measurement of a single two-bin channel with two samples: a <strong>signal sample</strong> and a <strong>background sample</strong>. The signal sample has an <em>unconstrained normalisation factor</em> <span class="math notranslate nohighlight">\(\mu\)</span>, while the background sample carries an <em>uncorrelated shape systematic</em> controlled by parameters <span class="math notranslate nohighlight">\(\gamma_{1}\)</span> and <span class="math notranslate nohighlight">\(\gamma_{2}\)</span>. The <em>background uncertainty</em> for the bins is <span class="math notranslate nohighlight">\(10\%\)</span> and <span class="math notranslate nohighlight">\(20\%\)</span> respectively.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyhf</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s open up the spec and then load it into a workspace</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/2-bin_1-channel.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">serialized</span><span class="p">:</span>
+  <span class="n">spec</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">serialized</span><span class="p">)</span>
+
+<span class="n">workspace</span> <span class="o">=</span> <span class="n">pyhf</span><span class="o">.</span><span class="n">Workspace</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and then create a statistical model from it</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">workspace</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">measurement_name</span><span class="o">=</span><span class="s2">&quot;Measurement&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Take a quick look at the model spec</span>
+<span class="n">model</span><span class="o">.</span><span class="n">spec</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;channels&#39;: [{&#39;name&#39;: &#39;singlechannel&#39;,
+   &#39;samples&#39;: [{&#39;name&#39;: &#39;signal&#39;,
+     &#39;data&#39;: [5.0, 10.0],
+     &#39;modifiers&#39;: [{&#39;name&#39;: &#39;mu&#39;, &#39;type&#39;: &#39;normfactor&#39;, &#39;data&#39;: None}]},
+    {&#39;name&#39;: &#39;background&#39;,
+     &#39;data&#39;: [50.0, 60.0],
+     &#39;modifiers&#39;: [{&#39;name&#39;: &#39;uncorr_bkguncrt&#39;,
+       &#39;type&#39;: &#39;shapesys&#39;,
+       &#39;data&#39;: [5.0, 12.0]}]}]}],
+ &#39;parameters&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s clean that up a bit to make it more readable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pretty_json</span><span class="p">(</span><span class="n">jsonlike</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">indent</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="n">indent</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">jsonlike</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="n">indent</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pretty_json</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;channels&quot;: [
+        {
+            &quot;name&quot;: &quot;singlechannel&quot;,
+            &quot;samples&quot;: [
+                {
+                    &quot;name&quot;: &quot;signal&quot;,
+                    &quot;data&quot;: [
+                        5.0,
+                        10.0
+                    ],
+                    &quot;modifiers&quot;: [
+                        {
+                            &quot;name&quot;: &quot;mu&quot;,
+                            &quot;type&quot;: &quot;normfactor&quot;,
+                            &quot;data&quot;: null
+                        }
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;background&quot;,
+                    &quot;data&quot;: [
+                        50.0,
+                        60.0
+                    ],
+                    &quot;modifiers&quot;: [
+                        {
+                            &quot;name&quot;: &quot;uncorr_bkguncrt&quot;,
+                            &quot;type&quot;: &quot;shapesys&quot;,
+                            &quot;data&quot;: [
+                                5.0,
+                                12.0
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    &quot;parameters&quot;: []
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>and now actually break that down again.</p>
+<div class="section" id="single-channel">
+<h3>Single Channel<a class="headerlink" href="#single-channel" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>demonstrates a simple measurement of a single two-bin channel</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Channels in model: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">channels</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">single_channel</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">spec</span><span class="p">[</span><span class="s2">&quot;channels&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of bins in channel: </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">channel_nbins</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Channels in model: [&#39;singlechannel&#39;]
+
+Number of bins in channel: {&#39;singlechannel&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">single_channel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;name&#39;: &#39;singlechannel&#39;,
+ &#39;samples&#39;: [{&#39;name&#39;: &#39;signal&#39;,
+   &#39;data&#39;: [5.0, 10.0],
+   &#39;modifiers&#39;: [{&#39;name&#39;: &#39;mu&#39;, &#39;type&#39;: &#39;normfactor&#39;, &#39;data&#39;: None}]},
+  {&#39;name&#39;: &#39;background&#39;,
+   &#39;data&#39;: [50.0, 60.0],
+   &#39;modifiers&#39;: [{&#39;name&#39;: &#39;uncorr_bkguncrt&#39;,
+     &#39;type&#39;: &#39;shapesys&#39;,
+     &#39;data&#39;: [5.0, 12.0]}]}]}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="samples">
+<h3>Samples<a class="headerlink" href="#samples" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>with two samples</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">samples</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;background&#39;, &#39;signal&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pretty_json</span><span class="p">(</span><span class="n">single_channel</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+    {
+        &quot;name&quot;: &quot;signal&quot;,
+        &quot;data&quot;: [
+            5.0,
+            10.0
+        ],
+        &quot;modifiers&quot;: [
+            {
+                &quot;name&quot;: &quot;mu&quot;,
+                &quot;type&quot;: &quot;normfactor&quot;,
+                &quot;data&quot;: null
+            }
+        ]
+    },
+    {
+        &quot;name&quot;: &quot;background&quot;,
+        &quot;data&quot;: [
+            50.0,
+            60.0
+        ],
+        &quot;modifiers&quot;: [
+            {
+                &quot;name&quot;: &quot;uncorr_bkguncrt&quot;,
+                &quot;type&quot;: &quot;shapesys&quot;,
+                &quot;data&quot;: [
+                    5.0,
+                    12.0
+                ]
+            }
+        ]
+    }
+]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modifiers">
+<h3>Modifiers<a class="headerlink" href="#modifiers" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">modifiers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;mu&#39;, &#39;normfactor&#39;), (&#39;uncorr_bkguncrt&#39;, &#39;shapesys&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>The signal sample has an unconstrained normalisation factor <span class="math notranslate nohighlight">\(\mu\)</span></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signal_sample</span> <span class="o">=</span> <span class="n">single_channel</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pretty_json</span><span class="p">(</span><span class="n">signal_sample</span><span class="p">[</span><span class="s2">&quot;modifiers&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+    {
+        &quot;name&quot;: &quot;mu&quot;,
+        &quot;type&quot;: &quot;normfactor&quot;,
+        &quot;data&quot;: null
+    }
+]
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>the background sample carries an uncorrelated shape systematic controlled by parameters <span class="math notranslate nohighlight">\(\gamma_{1}\)</span> and <span class="math notranslate nohighlight">\(\gamma_{2}\)</span></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Each bin has its own shape systematic</span>
+<span class="n">background_sample</span> <span class="o">=</span> <span class="n">single_channel</span><span class="p">[</span><span class="s2">&quot;samples&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pretty_json</span><span class="p">(</span><span class="n">background_sample</span><span class="p">[</span><span class="s2">&quot;modifiers&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[
+    {
+        &quot;name&quot;: &quot;uncorr_bkguncrt&quot;,
+        &quot;type&quot;: &quot;shapesys&quot;,
+        &quot;data&quot;: [
+            5.0,
+            12.0
+        ]
+    }
+]
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p>The background uncertainty for the bins is <span class="math notranslate nohighlight">\(10\%\)</span> and <span class="math notranslate nohighlight">\(20\%\)</span> respectively.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">bkg_uncert</span> <span class="o">=</span> <span class="n">background_sample</span><span class="p">[</span><span class="s2">&quot;modifiers&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;data&quot;</span><span class="p">]</span>
+<span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">bkg_uncert</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">background_sample</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.1, 0.2])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">remote_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/scikit-hep/pyhf/0f99cc488156e0826a27f55abc946d537a8922af/docs/examples/json/2-bin_1-channel.json&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">remote_url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="n">pretty_json</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;channels&quot;: [
+        {
+            &quot;name&quot;: &quot;singlechannel&quot;,
+            &quot;samples&quot;: [
+                {
+                    &quot;name&quot;: &quot;signal&quot;,
+                    &quot;data&quot;: [
+                        5.0,
+                        10.0
+                    ],
+                    &quot;modifiers&quot;: [
+                        {
+                            &quot;name&quot;: &quot;mu&quot;,
+                            &quot;type&quot;: &quot;normfactor&quot;,
+                            &quot;data&quot;: null
+                        }
+                    ]
+                },
+                {
+                    &quot;name&quot;: &quot;background&quot;,
+                    &quot;data&quot;: [
+                        50.0,
+                        60.0
+                    ],
+                    &quot;modifiers&quot;: [
+                        {
+                            &quot;name&quot;: &quot;uncorr_bkguncrt&quot;,
+                            &quot;type&quot;: &quot;shapesys&quot;,
+                            &quot;data&quot;: [
+                                5.0,
+                                12.0
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    &quot;observations&quot;: [
+        {
+            &quot;name&quot;: &quot;singlechannel&quot;,
+            &quot;data&quot;: [
+                50.0,
+                60.0
+            ]
+        }
+    ],
+    &quot;measurements&quot;: [
+        {
+            &quot;name&quot;: &quot;Measurement&quot;,
+            &quot;config&quot;: {
+                &quot;poi&quot;: &quot;mu&quot;,
+                &quot;parameters&quot;: []
+            }
+        }
+    ],
+    &quot;version&quot;: &quot;1.0.0&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<p>The data assocaited with a workspace</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workspace</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[50.0, 60.0, 100.0, 25.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>contains both observations</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">workspace</span><span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">with_aux</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[50.0, 60.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>as well as axuiliary information</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">auxdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100.0, 25.0]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="measurements">
+<h2>Measurements<a class="headerlink" href="#measurements" title="Permalink to this headline">¶</a></h2>
+<p>The parameter(s) of interest (POI) you’re trying to measure</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pretty_json</span><span class="p">(</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_measurement</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;name&quot;: &quot;Measurement&quot;,
+    &quot;config&quot;: {
+        &quot;poi&quot;: &quot;mu&quot;,
+        &quot;parameters&quot;: []
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inspecting-workspaces">
+<h2>Inspecting workspaces<a class="headerlink" href="#inspecting-workspaces" title="Permalink to this headline">¶</a></h2>
+<p>We can also use the <code class="docutils literal notranslate"><span class="pre">pyhf</span></code> command line tool to help us verify and inspect the workspace</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> pyhf inspect data/2-bin_1-channel.json
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Summary       
+    ------------------  
+       channels  1
+        samples  2
+     parameters  2
+      modifiers  2
+
+       channels  nbins
+     ----------  -----
+  singlechannel    2  
+
+        samples
+     ----------
+     background
+         signal
+
+     parameters  constraint              modifiers
+     ----------  ----------              ----------
+             mu  unconstrained           normfactor
+uncorr_bkguncrt  constrained_by_poisson  shapesys
+
+    measurement           poi            parameters
+     ----------        ----------        ----------
+(*) Measurement            mu            (none)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="introduction.html" title="previous page">PyHEP 2020 <code class="docutils literal notranslate"><span class="pre">pyhf</span></code> Tutorial</a>
+    <a class='right-next' id="next-link" href="inference.html" title="next page">Model Inference</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By the pyhf development team<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
