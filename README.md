@@ -4,6 +4,8 @@
 
 [![Deploy Jupyter Book](https://github.com/pyhf/tutorial-PyHEP-2020/workflows/Deploy%20Jupyter%20Book/badge.svg?branch=master)](https://pyhf.github.io/tutorial-PyHEP-2020/)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/pyhf/tutorial-PyHEP-2020/master)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4152916.svg)](https://doi.org/10.5281/zenodo.4152916)
+
 
 ## Setup
 
